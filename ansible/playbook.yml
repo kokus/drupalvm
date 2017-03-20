@@ -1,0 +1,60 @@
+---
+# vim:ft=yaml
+
+- name: Install LAMP stack
+  hosts: all
+  become: yes
+  become_method: sudo
+  tasks:
+  - name: Update yum
+    yum: name=* state=latest
+  - name: Upgrade ca-certificates
+    yum: name=ca-certificates state=latest
+  - name: Install the "Extra Packages for Enterprise Linux" repo
+    yum: name=http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm state=present
+  - name: Install the Remi repo (contains updated versions of PHP)
+    yum: name=http://rpms.famillecollet.com/enterprise/remi-release-6.rpm state=present
+  - name: Configure the Remi repo to fetch PHP 5.4
+    template: src=templates/remi.repo dest=/etc/yum.repos.d/remi.repo
+  - name: Install base CentOS packages
+    yum: name={{ item }} state=present
+    with_items:
+    - httpd
+    - mysql-server
+    - MySQL-python
+    - git
+    - vim
+    - wget 
+    - unzip
+    - curl 
+  - name: Install PHP 5.4 from Remi
+    yum: name={{ item }} state=present
+    with_items:
+    - php-5.4.45
+    - php-cli-5.4.45
+    - php-common-5.4.45
+    - php-gd-5.4.45
+    - php-ldap-5.4.45
+    - php-mbstring-5.4.45
+    - php-mysql-5.4.45
+    - php-odbc-5.4.45
+    - php-pdo-5.4.45
+    - php-pgsql-5.4.45
+    - php-soap-5.4.45
+    - php-xml-5.4.45
+    - php-xmlrpc-5.4.45
+  - name: Set unlimited PHP memory limit
+    lineinfile: dest=/etc/php.ini regexp=^memory_limit line="memory_limit = -1"
+
+- name: Start LAMP stack
+  hosts: all
+  become: yes
+  become_method: sudo
+  tasks:
+  - name: Insert iptables rule for Apache
+    lineinfile: dest=/etc/sysconfig/iptables create=yes state=present regexp="80" insertafter="^:OUTPUT "
+                line="-A INPUT -p tcp  --dport 80 -j  ACCEPT"
+  - name: Restart iptables
+    service: name=iptables state=restarted
+  - name: Configure Apache
+    template: src=templates/httpd.conf dest=/etc/httpd/conf/httpd.conf
