@@ -2,4 +2,5 @@
 .vagrant/*
 .idea/*
 audit/reports/*
+db_backup
 
