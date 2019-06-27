@@ -1,0 +1,72 @@
+Release Notes
+
+Version 1.9.1 / 2019-03-20
+
+- Drupal core upgrade 7.65 (security update)
+
+Version 1.9.0 / 2019-02-20
+- Link 1.6
+
+Version 1.8.0 / 2019-01-21
+- Drupal core upgrade 7.63 (security update)
+
+Version 1.7.0 / 2018-10-30
+- Drupal core upgrade 7.60 (security update)
+- Fixed grey hidden content on mobile menu
+
+Version 1.6.0 / 2018-04-25
+
+- Drupal core upgrade 7.59 (security update)
+- Field Group 1.6
+- External Links 1.18
+- Ctools 1.14
+- Fontawesome 2.8
+- Advanced Help 1.4
+- Views 3.20
+
+Version 1.5.0 / 2018-03-28
+
+- Drupal core upgrade 7.58 (security update)
+
+Version 1.4.0 / 2018-03-28
+
+- Drupal core upgrade 7.57 (security update)
+
+Version 1.3.1 / 2017-10-28
+
+- Updated several links from default content pages
+
+Version 1.3.0 / 2017-10-28
+
+- Views to 1.8 (security update)
+- Webform to 4.16
+- Webform Validation 1.14 *
+- Webform References 1.9 *
+- Captcha and Captcha image 1.5 *
+- Usasearch 4.4 *
+- Site Verification 1.2 *
+- Rules 2.10 *
+- Views Accordion 1.1 *
+- Feeds 2.0-beta4 *
+- Feeds Parsers 1.0-beta2 *
+- Views XML Backend 1.0-alpha4 *
+- Views Json Query 1.2 *
+- Fontawesome 2.1 *
+
+Version 1.2.0 / 2017-07-13 (security updates)
+
+- Drupal core upgraded to latest 7.56 release.
+- Ctools to 1.12
+- Ckeditor to 1.18
+- Date to 2.10
+- Font Awesome 2.6
+- imce to 1.11
+- Modernizr to 3.10
+- References to 2.2
+- Responsive Menus to 1.6
+- Token to 1.7
+- Views to 3.16
+- Field group to 1.5
+
+
+* Added to the codebase in this release.
